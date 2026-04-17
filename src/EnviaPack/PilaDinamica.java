@@ -44,6 +44,12 @@ public class PilaDinamica {
             aux = aux.getSiguiente();
         }
     }
+    
+    public Nodo getCima() {
+    return cima;
+}
+    
+    
 }
 
     
