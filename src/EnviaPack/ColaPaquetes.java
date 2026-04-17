@@ -24,4 +24,16 @@ public class ColaPaquetes {
         }
     }
     
+    public Paquete desencolar() {
+        if (frente == null) return null;
+        Paquete dato = frente.getDato();
+        frente = frente.getSiguiente();
+        if (frente == null) ultimo = null;
+        return dato;
+    }
+    
+    public boolean vacia() {
+        return frente == null;
+    }
+    
 }
