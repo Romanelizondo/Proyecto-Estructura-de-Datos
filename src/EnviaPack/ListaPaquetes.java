@@ -1,13 +1,15 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package EnviaPack;
-// repoitorio
+
 /**
  *
- * @author Usuario
+ * @author camad
  */
 public class ListaPaquetes {
-
-    private Nodo inicio;
+     private Nodo inicio;
 
     public ListaPaquetes() {
         this.inicio = null;
@@ -58,6 +60,5 @@ public class ListaPaquetes {
     public Nodo getInicio() {
         return inicio;
     }
-}
     
-
+}

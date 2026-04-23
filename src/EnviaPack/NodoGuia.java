@@ -8,28 +8,30 @@ package EnviaPack;
  *
  * @author camad
  */
-public class Nodo {
-     private Paquete dato;
-    private Nodo siguiente;
-
-    public Nodo() {
+public class NodoGuia {
+    
+    private GuiaEnvio dato;
+    private NodoGuia siguiente;
+    
+    public NodoGuia(){
         this.siguiente = null;
     }
 
-    public Paquete getDato() {
+    public GuiaEnvio getDato() {
         return dato;
     }
 
-    public void setDato(Paquete dato) {
+    public void setDato(GuiaEnvio dato) {
         this.dato = dato;
     }
 
-    public Nodo getSiguiente() {
+    public NodoGuia getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(Nodo siguiente) {
+    public void setSiguiente(NodoGuia siguiente) {
         this.siguiente = siguiente;
     }
+    
     
 }

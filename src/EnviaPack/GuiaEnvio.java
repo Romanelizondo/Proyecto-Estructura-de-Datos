@@ -8,17 +8,31 @@ package EnviaPack;
  *
  * @author camad
  */
-public class Paquete {
+public class GuiaEnvio {
+    
+    private int numeroGuia;
     private String descripcion;
-    private String tipoEnvio;
-    private double peso;
+    private String tipoEnvio;        
+    private String codigoSeguimiento;
     private String destino;
-
-    public Paquete() {
+    private String fecha;
+    
+    public GuiaEnvio(){
+        this.numeroGuia = 0;
         this.descripcion = "";
         this.tipoEnvio = "";
-        this.peso = 0;
+        this.codigoSeguimiento = "";
         this.destino = "";
+        this.fecha = "";
+        
+    }
+
+    public int getNumeroGuia() {
+        return numeroGuia;
+    }
+
+    public void setNumeroGuia(int numeroGuia) {
+        this.numeroGuia = numeroGuia;
     }
 
     public String getDescripcion() {
@@ -37,12 +51,12 @@ public class Paquete {
         this.tipoEnvio = tipoEnvio;
     }
 
-    public double getPeso() {
-        return peso;
+    public String getCodigoSeguimiento() {
+        return codigoSeguimiento;
     }
 
-    public void setPeso(double peso) {
-        this.peso = peso;
+    public void setCodigoSeguimiento(String codigoSeguimiento) {
+        this.codigoSeguimiento = codigoSeguimiento;
     }
 
     public String getDestino() {
@@ -51,6 +65,14 @@ public class Paquete {
 
     public void setDestino(String destino) {
         this.destino = destino;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
     
 }

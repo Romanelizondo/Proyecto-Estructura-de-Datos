@@ -1,13 +1,15 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package EnviaPack;
-// repoitorio
+
 /**
  *
- * @author Usuario
+ * @author camad
  */
 public class PilaDinamica {
-
-    private Nodo cima;
+     Nodo cima;
 
     public PilaDinamica() {
         this.cima = null;
@@ -44,13 +46,9 @@ public class PilaDinamica {
             aux = aux.getSiguiente();
         }
     }
-    
+
     public Nodo getCima() {
-    return cima;
+        return cima;
+    }
+    
 }
-    
-    
-}
-
-    
-

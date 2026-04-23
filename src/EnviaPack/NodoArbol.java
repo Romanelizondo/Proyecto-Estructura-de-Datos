@@ -6,38 +6,51 @@ package EnviaPack;
 
 /**
  *
- * @author roman
+ * @author camad
  */
 public class NodoArbol {
-    private String ciudad;
-    private ListaPaquetes paquetes; // Lista simple dentro del nodo
-    private NodoArbol izquierdo;
-    private NodoArbol derecho;
+     String destino;
+    private ListaPaquetes lista;
+    private NodoArbol izquierda;
+    private NodoArbol derecha;
 
-    public NodoArbol(String ciudad) {
-        this.ciudad = ciudad;
-        this.paquetes = new ListaPaquetes();
-        this.izquierdo = null;
-        this.derecho = null;
+    public NodoArbol(String destino) {
+        this.destino = destino;
+        this.lista = new ListaPaquetes();
+        this.izquierda = null;
+        this.derecha = null;
     }
 
-    // Getters y Setters
-    public String getCiudad(){ 
-        return ciudad; 
+    public String getDestino() {
+        return destino;
     }
-    public ListaPaquetes getPaquetes(){ 
-        return paquetes; 
+
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
-    public NodoArbol getIzquierdo(){ 
-        return izquierdo; 
+
+    public ListaPaquetes getLista() {
+        return lista;
     }
-    public void setIzquierdo(NodoArbol izq){ 
-        this.izquierdo = izq; 
+
+    public void setLista(ListaPaquetes lista) {
+        this.lista = lista;
     }
-    public NodoArbol getDerecho(){ 
-        return derecho; 
+
+    public NodoArbol getIzquierda() {
+        return izquierda;
     }
-    public void setDerecho(NodoArbol der){ 
-        this.derecho = der; 
+
+    public void setIzquierda(NodoArbol izquierda) {
+        this.izquierda = izquierda;
     }
+
+    public NodoArbol getDerecha() {
+        return derecha;
+    }
+
+    public void setDerecha(NodoArbol derecha) {
+        this.derecha = derecha;
+    }
+    
 }
