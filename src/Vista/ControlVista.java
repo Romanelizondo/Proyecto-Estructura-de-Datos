@@ -192,6 +192,7 @@ public class ControlVista {
             }
             JOptionPane.showMessageDialog(null, "Paquetes movidos a la pila de almacenamiento.");
         }
+        lista.vaciar();
     }
     
     public void encolar(){

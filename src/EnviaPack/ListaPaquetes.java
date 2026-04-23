@@ -60,5 +60,9 @@ public class ListaPaquetes {
     public Nodo getInicio() {
         return inicio;
     }
+
+    public void vaciar() {
+    inicio = null;
+    }
     
 }
