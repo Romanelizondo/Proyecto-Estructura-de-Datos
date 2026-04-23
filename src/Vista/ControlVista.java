@@ -103,20 +103,37 @@ public class ControlVista {
         registro.setLocationRelativeTo(null);
     }
     
-    public void registrar(){
-        Paquete nuevoP = new Paquete();
-        try{
-            nuevoP.setDescripcion(registro.txtADescripcion.getText());
-            nuevoP.setTipoEnvio(String.valueOf(registro.cmbTipoEnvio.getSelectedItem()));
-            nuevoP.setPeso(Double.parseDouble(registro.txtPeso.getText()));
-        } catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: El Peso debe de ser un\nValor númerico válido");
-            return;
-        }            
-        lista.insertar(nuevoP);
-        limpiarRegistro();
-        JOptionPane.showMessageDialog(null, "Paquete registrado en la lista de ingreso.");
+public void registrar() {
+    String descripcion = registro.txtADescripcion.getText().trim();
+    if (descripcion.isEmpty()) {
+        JOptionPane.showMessageDialog(
+            null,
+            "No se pueden registrar paquetes sin descripción.",
+            "Error de registro",
+            JOptionPane.ERROR_MESSAGE
+        );
+        return;
     }
+
+    Paquete nuevoP = new Paquete();
+    try {
+        nuevoP.setDescripcion(descripcion);
+        nuevoP.setTipoEnvio(String.valueOf(registro.cmbTipoEnvio.getSelectedItem()));
+        nuevoP.setPeso(Double.parseDouble(registro.txtPeso.getText()));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(
+            null,
+            "Error: El Peso debe ser un valor numérico válido",
+            "Error de registro",
+            JOptionPane.ERROR_MESSAGE
+        );
+        return;
+    }
+
+    lista.insertar(nuevoP);
+    limpiarRegistro();
+    JOptionPane.showMessageDialog(null, "Paquete registrado en la lista de ingreso.");
+}
     
     public void verPaquetes(){
         if(lista.vacia()){
