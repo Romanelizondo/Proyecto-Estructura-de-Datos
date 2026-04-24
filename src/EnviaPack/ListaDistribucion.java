@@ -17,7 +17,7 @@ public class ListaDistribucion {
         return inicio == null;
     }
     
-    public void asignarDistribucion(String codigoGuia, String destino, String direccion, String fecha, String repartidor, String estado){
+    public void asignarDistribucion(String codigoGuia, String destino,String direccion, String fecha, String repartidor, String estado){
         
         Distribucion d = new Distribucion();
         d.setCodigoGuia(codigoGuia);

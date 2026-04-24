@@ -37,20 +37,20 @@ public class Inicio extends javax.swing.JFrame {
         PanelSuperior = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
-        btnGuia = new javax.swing.JButton();
-        btnAsignarDatos = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnVerPaquetes = new javax.swing.JButton();
+        btnVerCola = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         PanelInferior = new javax.swing.JPanel();
         PanelRegistro = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
-        btnVerPaquetes = new javax.swing.JButton();
+        btnApilar = new javax.swing.JButton();
         PanelEnvios = new javax.swing.JPanel();
         btnEncolar = new javax.swing.JButton();
-        btnApilar = new javax.swing.JButton();
-        PanelSeguimiento = new javax.swing.JPanel();
         btnClasificar = new javax.swing.JButton();
-        btnVerCola = new javax.swing.JButton();
+        PanelSeguimiento = new javax.swing.JPanel();
+        btnGuia = new javax.swing.JButton();
+        btnAsignarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -86,27 +86,28 @@ public class Inicio extends javax.swing.JFrame {
         jToolBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jToolBar1.setRollover(true);
 
-        btnGuia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnGuia.setText("Generar Guías");
-        btnGuia.setFocusable(false);
-        btnGuia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnGuia.setMaximumSize(new java.awt.Dimension(150, 50));
-        btnGuia.setMinimumSize(new java.awt.Dimension(95, 50));
-        btnGuia.setPreferredSize(new java.awt.Dimension(95, 50));
-        btnGuia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnGuia.addActionListener(this::btnGuiaActionPerformed);
-        jToolBar1.add(btnGuia);
+        btnVerPaquetes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVerPaquetes.setText("Paquetes Registrados");
+        btnVerPaquetes.setMaximumSize(new java.awt.Dimension(170, 50));
+        btnVerPaquetes.addActionListener(this::btnVerPaquetesActionPerformed);
+        jToolBar1.add(btnVerPaquetes);
 
-        btnAsignarDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAsignarDatos.setText("Asignar Destino");
-        btnAsignarDatos.setFocusable(false);
-        btnAsignarDatos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAsignarDatos.setMaximumSize(new java.awt.Dimension(150, 50));
-        btnAsignarDatos.setMinimumSize(new java.awt.Dimension(100, 50));
-        btnAsignarDatos.setPreferredSize(new java.awt.Dimension(100, 50));
-        btnAsignarDatos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAsignarDatos.addActionListener(this::btnAsignarDatosActionPerformed);
-        jToolBar1.add(btnAsignarDatos);
+        btnVerCola.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVerCola.setText("Ver Cola");
+        btnVerCola.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnVerCola.addActionListener(this::btnVerColaActionPerformed);
+        jToolBar1.add(btnVerCola);
+
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscar.setText("Consultar Envios");
+        btnBuscar.setFocusable(false);
+        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscar.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnBuscar.setMinimumSize(new java.awt.Dimension(100, 50));
+        btnBuscar.setPreferredSize(new java.awt.Dimension(100, 50));
+        btnBuscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+        jToolBar1.add(btnBuscar);
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setText("Salir");
@@ -118,17 +119,6 @@ public class Inicio extends javax.swing.JFrame {
         btnSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSalir.addActionListener(this::btnSalirActionPerformed);
         jToolBar1.add(btnSalir);
-
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnBuscar.setText("Consultar Paquetes");
-        btnBuscar.setFocusable(false);
-        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscar.setMaximumSize(new java.awt.Dimension(150, 50));
-        btnBuscar.setMinimumSize(new java.awt.Dimension(100, 50));
-        btnBuscar.setPreferredSize(new java.awt.Dimension(100, 50));
-        btnBuscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
-        jToolBar1.add(btnBuscar);
 
         PanelInferior.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -144,15 +134,15 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         PanelRegistro.setBackground(new java.awt.Color(255, 255, 255));
-        PanelRegistro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro De Paquetes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(153, 153, 255))); // NOI18N
+        PanelRegistro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(153, 153, 255))); // NOI18N
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegistrar.setText("Registrar Paquetes");
         btnRegistrar.addActionListener(this::btnRegistrarActionPerformed);
 
-        btnVerPaquetes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnVerPaquetes.setText("Ver Paquetes");
-        btnVerPaquetes.addActionListener(this::btnVerPaquetesActionPerformed);
+        btnApilar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnApilar.setText("Apilar Paquete");
+        btnApilar.addActionListener(this::btnApilarActionPerformed);
 
         javax.swing.GroupLayout PanelRegistroLayout = new javax.swing.GroupLayout(PanelRegistro);
         PanelRegistro.setLayout(PanelRegistroLayout);
@@ -161,7 +151,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(PanelRegistroLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVerPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnApilar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -171,72 +161,82 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVerPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnApilar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
         PanelEnvios.setBackground(new java.awt.Color(255, 255, 255));
-        PanelEnvios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestión De Envíos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(153, 153, 255))); // NOI18N
+        PanelEnvios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Organización", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(153, 153, 255))); // NOI18N
 
         btnEncolar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEncolar.setText("Encolar Paquete");
         btnEncolar.addActionListener(this::btnEncolarActionPerformed);
 
-        btnApilar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnApilar.setText("Apilar Paquete");
-        btnApilar.addActionListener(this::btnApilarActionPerformed);
+        btnClasificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnClasificar.setText("Clasificar Paquetes");
+        btnClasificar.addActionListener(this::btnClasificarActionPerformed);
 
         javax.swing.GroupLayout PanelEnviosLayout = new javax.swing.GroupLayout(PanelEnvios);
         PanelEnvios.setLayout(PanelEnviosLayout);
         PanelEnviosLayout.setHorizontalGroup(
             PanelEnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEnviosLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(24, 24, 24)
                 .addGroup(PanelEnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnApilar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEncolar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         PanelEnviosLayout.setVerticalGroup(
             PanelEnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEnviosLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(btnApilar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelEnviosLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(btnEncolar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         PanelSeguimiento.setBackground(new java.awt.Color(255, 255, 255));
-        PanelSeguimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seguimiento y Clasificación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(153, 153, 255))); // NOI18N
+        PanelSeguimiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrega", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(153, 153, 255))); // NOI18N
 
-        btnClasificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnClasificar.setText("Clasificar Paquetes");
-        btnClasificar.addActionListener(this::btnClasificarActionPerformed);
+        btnGuia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuia.setText("Generar Guías");
+        btnGuia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGuia.setMaximumSize(new java.awt.Dimension(140, 27));
+        btnGuia.setMinimumSize(new java.awt.Dimension(95, 50));
+        btnGuia.setPreferredSize(new java.awt.Dimension(95, 50));
+        btnGuia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnGuia.addActionListener(this::btnGuiaActionPerformed);
 
-        btnVerCola.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnVerCola.setText("Ver Cola");
-        btnVerCola.addActionListener(this::btnVerColaActionPerformed);
+        btnAsignarDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAsignarDatos.setText("Distribucion Envios");
+        btnAsignarDatos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAsignarDatos.setMaximumSize(new java.awt.Dimension(150, 200));
+        btnAsignarDatos.setMinimumSize(new java.awt.Dimension(100, 50));
+        btnAsignarDatos.setPreferredSize(new java.awt.Dimension(100, 50));
+        btnAsignarDatos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAsignarDatos.addActionListener(this::btnAsignarDatosActionPerformed);
 
         javax.swing.GroupLayout PanelSeguimientoLayout = new javax.swing.GroupLayout(PanelSeguimiento);
         PanelSeguimiento.setLayout(PanelSeguimientoLayout);
         PanelSeguimientoLayout.setHorizontalGroup(
             PanelSeguimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSeguimientoLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(PanelSeguimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVerCola, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSeguimientoLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(PanelSeguimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAsignarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         PanelSeguimientoLayout.setVerticalGroup(
             PanelSeguimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSeguimientoLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnVerCola, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+            .addGroup(PanelSeguimientoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(btnGuia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnAsignarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout PanelFondoLayout = new javax.swing.GroupLayout(PanelFondo);

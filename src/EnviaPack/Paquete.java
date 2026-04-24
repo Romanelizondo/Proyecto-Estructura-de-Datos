@@ -13,12 +13,14 @@ public class Paquete {
     private String tipoEnvio;
     private double peso;
     private String destino;
+    private boolean tieneGuia;
 
     public Paquete() {
         this.descripcion = "";
         this.tipoEnvio = "";
         this.peso = 0;
         this.destino = "";
+        this.tieneGuia = false;
     }
 
     public String getDescripcion() {
@@ -51,6 +53,14 @@ public class Paquete {
 
     public void setDestino(String destino) {
         this.destino = destino;
+    }
+    
+    public boolean isTieneGuia() {
+        return tieneGuia;
+    }
+
+    public void setTieneGuia(boolean tieneGuia) {
+        this.tieneGuia = tieneGuia;
     }
     
 }

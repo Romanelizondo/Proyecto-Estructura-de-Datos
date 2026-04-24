@@ -150,9 +150,13 @@ public class VerCola extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tipo de Envío:");
 
+        txtPeso.setEditable(false);
+        txtPeso.setBackground(new java.awt.Color(255, 255, 255));
         txtPeso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPeso.addActionListener(this::txtPesoActionPerformed);
 
+        txtADescripcion.setEditable(false);
+        txtADescripcion.setBackground(new java.awt.Color(255, 255, 255));
         txtADescripcion.setColumns(20);
         txtADescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtADescripcion.setRows(5);
@@ -167,6 +171,8 @@ public class VerCola extends javax.swing.JFrame {
         btnSiguiente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSiguiente.addActionListener(this::btnSiguienteActionPerformed);
 
+        txtTipoEnvio.setEditable(false);
+        txtTipoEnvio.setBackground(new java.awt.Color(255, 255, 255));
         txtTipoEnvio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTipoEnvio.addActionListener(this::txtTipoEnvioActionPerformed);
 

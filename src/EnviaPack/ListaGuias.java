@@ -5,6 +5,7 @@
 package EnviaPack;
 
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
 
 /**
  *
@@ -23,7 +24,7 @@ public class ListaGuias {
     public void generarDesdePaquete(Paquete p){
         
         String codigo = "COD" + contador;
-        String fecha = JOptionPane.showInputDialog("Paquete: " + p.getDescripcion() + " | Ingrese la fecha: ");
+        String fecha = LocalDate.now().toString();
         
         
         GuiaEnvio g = new GuiaEnvio();

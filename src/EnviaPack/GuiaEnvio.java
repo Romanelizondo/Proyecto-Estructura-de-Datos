@@ -16,6 +16,7 @@ public class GuiaEnvio {
     private String codigoSeguimiento;
     private String destino;
     private String fecha;
+    private boolean tieneDistribucion;
     
     public GuiaEnvio(){
         this.numeroGuia = 0;
@@ -24,7 +25,6 @@ public class GuiaEnvio {
         this.codigoSeguimiento = "";
         this.destino = "";
         this.fecha = "";
-        
     }
 
     public int getNumeroGuia() {
@@ -73,6 +73,14 @@ public class GuiaEnvio {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public boolean isTieneDistribucion() {
+        return tieneDistribucion;
+    }
+
+    public void setTieneDistribucion(boolean tieneDistribucion) {
+        this.tieneDistribucion = tieneDistribucion;
     }
     
 }

@@ -69,32 +69,91 @@ public class ControlVista {
         cola.desencolar();
     }
     
+    public boolean hayPaquetesSinGuia(NodoArbol nodo) {
+        if (nodo == null) return false;
+
+        Nodo aux = nodo.getLista().getInicio();
+        while (aux != null) {
+            if (!aux.getDato().isTieneGuia()) {
+                return true;
+            }
+            aux = aux.getSiguiente();
+        }
+
+        return hayPaquetesSinGuia(nodo.getIzquierda()) ||
+               hayPaquetesSinGuia(nodo.getDerecha());
+    }
+    
+    
+    
     public void generarGuia(){
         if (arbol.getRaiz() == null) {
             JOptionPane.showMessageDialog(null, "No hay paquetes clasificados.");
+            return;
+            
+        } if (!hayPaquetesSinGuia(arbol.getRaiz())) {
+            JOptionPane.showMessageDialog(null, "Todos los paquetes ya tienen guía generada.");
+            
         } else {
             Principal.generarGuiasDesdeArbol(arbol.getRaiz(), guias);
         }
     }
     
     public void asignarDestino(){
-        asignarDestino.setVisible(true);
-        asignarDestino.setLocationRelativeTo(null);
-        
-        asignarDestino.txtGuia.setText(guias.getInicio().getDato().getCodigoSeguimiento());
-        asignarDestino.txtCiudad.setText(guias.getInicio().getDato().getDestino());
-        asignarDestino.txtADescripcion.setText(guias.getInicio().getDato().getDescripcion());
+        if(guias.vacia()){
+            JOptionPane.showMessageDialog(null, "No hay paquetes con Guías para Distribuir.");
+            menuInicio();
+        } else {
+            NodoGuia aux = guias.getInicio();
+            
+            while (aux != null && aux.getDato().isTieneDistribucion()) {
+            aux = aux.getSiguiente();
+            }
+
+            if (aux == null) {
+                JOptionPane.showMessageDialog(null, "Todas las guías ya tienen distribución asignada.");
+                menuInicio();
+                return;
+            }
+            
+            asignarDestino.setTemp(aux);
+            asignarDestino.setVisible(true);
+            asignarDestino.setLocationRelativeTo(null);
+
+            asignarDestino.txtGuia.setText(asignarDestino.getTemp().getDato().getCodigoSeguimiento());
+            asignarDestino.txtCiudad.setText(asignarDestino.getTemp().getDato().getDestino());
+            asignarDestino.txtADescripcion.setText(asignarDestino.getTemp().getDato().getDescripcion());
+        }
     }
     
     public void asignarDatos(){
-        distribucion.asignarDistribucion(asignarDestino.txtCodigo.getText(), asignarDestino.txtDestino.getText(), 
-                asignarDestino.txtDireccion.getText(), asignarDestino.txtFecha.getText(), 
-                asignarDestino.txtRepartidor.getText(), String.valueOf(asignarDestino.cmbEstado.getSelectedItem()));
+        String guia = asignarDestino.txtGuia.getText();
+        String destino = asignarDestino.txtCiudad.getText();
+        String direccion = asignarDestino.txtDireccion.getText();
+        String fecha = asignarDestino.txtFecha.getText();
+        String repartidor = asignarDestino.txtRepartidor.getText();
+        String estado = String.valueOf(asignarDestino.cmbEstado.getSelectedItem());
         
-        asignarDestino.txtGuia.setText(guias.getInicio().getDato().getCodigoSeguimiento());
-        asignarDestino.txtCiudad.setText(guias.getInicio().getDato().getDestino());
-        asignarDestino.txtADescripcion.setText(guias.getInicio().getDato().getDescripcion());
-        limpiarDestino();
+        if (fecha.isEmpty() || repartidor.isEmpty() || estado.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                null,
+                "No se pueden asignar Datos vacíos.",
+                "Error de registro",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        } else {
+            distribucion.asignarDistribucion(guia, destino, direccion, fecha, repartidor , estado);
+            asignarDestino.getTemp().getDato().setTieneDistribucion(true);
+            
+            asignarDestino.setVisible(false);
+            asignarDestino();
+            
+            asignarDestino.txtGuia.setText(asignarDestino.getTemp().getDato().getCodigoSeguimiento());
+            asignarDestino.txtCiudad.setText(asignarDestino.getTemp().getDato().getDestino());
+            asignarDestino.txtADescripcion.setText(asignarDestino.getTemp().getDato().getDescripcion());
+            limpiarDestino();
+        }
     }
     
     public void registrarPaquete(){
@@ -103,37 +162,37 @@ public class ControlVista {
         registro.setLocationRelativeTo(null);
     }
     
-public void registrar() {
-    String descripcion = registro.txtADescripcion.getText().trim();
-    if (descripcion.isEmpty()) {
-        JOptionPane.showMessageDialog(
-            null,
-            "No se pueden registrar paquetes sin descripción.",
-            "Error de registro",
-            JOptionPane.ERROR_MESSAGE
-        );
-        return;
-    }
+    public void registrar() {
+        String descripcion = registro.txtADescripcion.getText().trim();
+        if (descripcion.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                null,
+                "No se pueden registrar paquetes sin descripción.",
+                "Error de registro",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
 
-    Paquete nuevoP = new Paquete();
-    try {
-        nuevoP.setDescripcion(descripcion);
-        nuevoP.setTipoEnvio(String.valueOf(registro.cmbTipoEnvio.getSelectedItem()));
-        nuevoP.setPeso(Double.parseDouble(registro.txtPeso.getText()));
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(
-            null,
-            "Error: El Peso debe ser un valor numérico válido",
-            "Error de registro",
-            JOptionPane.ERROR_MESSAGE
-        );
-        return;
-    }
+        Paquete nuevoP = new Paquete();
+        try {
+            nuevoP.setDescripcion(descripcion);
+            nuevoP.setTipoEnvio(String.valueOf(registro.cmbTipoEnvio.getSelectedItem()));
+            nuevoP.setPeso(Double.parseDouble(registro.txtPeso.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Error: El Peso debe ser un valor numérico válido",
+                "Error de registro",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
 
-    lista.insertar(nuevoP);
-    limpiarRegistro();
-    JOptionPane.showMessageDialog(null, "Paquete registrado en la lista de ingreso.");
-}
+        lista.insertar(nuevoP);
+        limpiarRegistro();
+        JOptionPane.showMessageDialog(null, "Paquete registrado en la lista de ingreso.");
+    }
     
     public void verPaquetes(){
         if(lista.vacia()){
@@ -245,8 +304,6 @@ public void registrar() {
     }
     
     public void limpiarDestino(){
-        asignarDestino.txtCodigo.setText("");
-        asignarDestino.txtDestino.setText("");
         asignarDestino.txtDireccion.setText("");
         asignarDestino.txtFecha.setText("");
         asignarDestino.txtRepartidor.setText("");
@@ -256,6 +313,7 @@ public void registrar() {
     public void verDistribucion(){
         if(distribucion.vacia()){
             JOptionPane.showMessageDialog(null, "No hay paquetes en la lista de Distribución.");
+            menuInicio();
         } else {
             verDistribucion.setTemp(distribucion.getInicio());
 
@@ -273,16 +331,43 @@ public void registrar() {
     
     public void siguienteDistribucion(){
         if(verDistribucion.getTemp().getSiguiente() == null){
-            
+            verDistribucion.setTemp(distribucion.getInicio());
         } else {
             verDistribucion.setTemp(verDistribucion.getTemp().getSiguiente());
-            
-            verDistribucion.txtCodigo.setText(verDistribucion.getTemp().getDato().getCodigoGuia());
-            verDistribucion.txtDestino.setText(verDistribucion.getTemp().getDato().getDestino());
-            verDistribucion.txtDireccion.setText(verDistribucion.getTemp().getDato().getDireccion());
-            verDistribucion.txtRepartidor.setText(verDistribucion.getTemp().getDato().getRepartidor());
-            verDistribucion.txtFecha.setText(verDistribucion.getTemp().getDato().getFechaEntrega());
-            verDistribucion.txtEstado.setText(verDistribucion.getTemp().getDato().getEstado());
-        } 
+        }
+        
+        verDistribucion.txtCodigo.setText(verDistribucion.getTemp().getDato().getCodigoGuia());
+        verDistribucion.txtDestino.setText(verDistribucion.getTemp().getDato().getDestino());
+        verDistribucion.txtDireccion.setText(verDistribucion.getTemp().getDato().getDireccion());
+        verDistribucion.txtRepartidor.setText(verDistribucion.getTemp().getDato().getRepartidor());
+        verDistribucion.txtFecha.setText(verDistribucion.getTemp().getDato().getFechaEntrega());
+        verDistribucion.txtEstado.setText(verDistribucion.getTemp().getDato().getEstado());
+    }
+    
+    public void siguienteAsignarDatos(){
+        NodoGuia aux = asignarDestino.getTemp().getSiguiente();
+
+        while (aux != null && aux.getDato().isTieneDistribucion()) {
+            aux = aux.getSiguiente();
+        }
+
+        if (aux == null) {
+            aux = guias.getInicio();
+
+            while (aux != null && aux.getDato().isTieneDistribucion()) {
+                aux = aux.getSiguiente();
+            }
+        }
+
+        if (aux == null) {
+            JOptionPane.showMessageDialog(null, "No hay más guías disponibles.");
+            return;
+        }
+
+        asignarDestino.setTemp(aux);
+        
+        asignarDestino.txtGuia.setText(asignarDestino.getTemp().getDato().getCodigoSeguimiento());
+        asignarDestino.txtCiudad.setText(asignarDestino.getTemp().getDato().getDestino());
+        asignarDestino.txtADescripcion.setText(asignarDestino.getTemp().getDato().getDescripcion());
     }
 }

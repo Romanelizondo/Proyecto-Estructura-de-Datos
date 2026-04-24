@@ -252,8 +252,8 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPaquetesActionPerformed
-        this.setVisible(false);
-        control.verPaquetes();
+       control.verPaquetes();
+       this.setVisible(false);
     }//GEN-LAST:event_btnVerPaquetesActionPerformed
 
     private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
